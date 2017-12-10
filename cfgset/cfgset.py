@@ -15,11 +15,14 @@ class CfgSet (object):
 
   @logtool.log_call
   def _expand_vars (self, ctx, v):
+    # At some point this should probably handle complex types.
     while True:
       m = RE_VAR.search (v)
       if not m:
         break
       n = m.group (1) # Variable name
+      # TODO: WOuld be nice to handle absolute vs relative contexts
+      # (ie does the key start with "/" or not)
       r = self.value (ctx + [n]) # Replacement value
       if isinstance (r, (basestring, int, long, float, complex)):
         # print "Pre: ", v
