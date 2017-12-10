@@ -1,0 +1,9 @@
+DEFAULT:
+  one: one
+  two: two
+  onetwo: ${one}${two}
+  layer: ${onetwo}
+  l:
+    - AAA
+    - BBB
+    - CCC
